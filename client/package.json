@@ -81,7 +81,7 @@
       "!src/polyfill.js"
     ]
   },
-  "engine":{
+  "engines":{
     "node":"v12.16.1",
     "npm":"6.14.7"
   },
