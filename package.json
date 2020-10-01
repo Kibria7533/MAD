@@ -5,13 +5,13 @@
   "main": "index.js",
   "engines":{
     "node":"v12.16.1",
-    "npm":"6.14.7"
+    "npm":"6.13.7"
   },
   "scripts": {
     "client-install": "cd client && npm install",
     "build":"cd client && npm run build",
-    "heroku-postbuild":"npm run client-install && npm run build",
     "start": "node server.js",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm run client-install && npm run build",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""

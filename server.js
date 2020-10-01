@@ -22,14 +22,7 @@ app.use(passport.initialize());
 
 
 app.use(bp.json());
-if(process.env.NODE_ENV==="production"){
-  app.use(exp.static('client/build'));
 
-  app.get('*',(req,res)=>{
-    res.sendFile(path.resolve(__dirname,'client','build','index.html'))
-  })
-
-}
 
 require("./middlewares/passport")(passport);
 
@@ -44,7 +37,14 @@ app.use(require("./routes/menus"));
 app.use(require("./routes/questions"));
 app.use(require("./routes/courses"));
 app.use(require("./routes/teachers"));
+if(process.env.NODE_ENV==="production"){
+  app.use(exp.static('client/build'));
 
+  app.get('*',(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+  })
+
+}
 
 const startApp = async () => {
   try {
@@ -59,6 +59,7 @@ const startApp = async () => {
       message: `Successfully connected with the Database \n${DB}`,
       badge: true
     });
+
 
     // Start Listenting for the server on PORT
     app.listen(PORT, () =>
