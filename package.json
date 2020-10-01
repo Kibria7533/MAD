@@ -3,18 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines":{
-    "node":"v12.16.1",
-    "npm":"6.13.7"
-  },
+  
   "scripts": {
     "client-install": "cd client && npm install",
-    "build":"cd client && npm run build",
     "start": "node server.js",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm run client-install && npm run build",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -39,9 +35,7 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.0"
   },
-  "devDependencies": {
-    "http-proxy-middleware": "^1.0.5"
-  }, 
-  "proxy": "http://localhost:3000",
-  "secure":"false"
+  "engines": {
+    "node": "12.16.1"
+  }
 }

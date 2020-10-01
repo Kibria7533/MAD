@@ -37,13 +37,11 @@ app.use(require("./routes/menus"));
 app.use(require("./routes/questions"));
 app.use(require("./routes/courses"));
 app.use(require("./routes/teachers"));
-if(process.env.NODE_ENV==="production"){
-  app.use(exp.static('client/build'));
-
+if(process.env.NODE_ENV==='production'){
+  app.use(express.static('client/build'));
   app.get('*',(req,res)=>{
-    res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+    res.sendFile(path.join('client','build','index.html'));
   })
-
 }
 
 const startApp = async () => {
