@@ -23,7 +23,7 @@ app.use(passport.initialize());
 
 app.use(bp.json());
 if(process.env.NODE_ENV==="production"){
-  app.use(exp.static('client/build'));
+  app.use(exp.static(path.join(__dirname,'client/build')));
 
 }
 
